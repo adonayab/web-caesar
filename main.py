@@ -13,10 +13,18 @@ def index():
 
 @app.route("/", methods=['POST'])
 def encrypt():
-    rot = int(request.form['rot'])
+    rot = request.form['rot']
     text = request.form['text']
 
-    encrypted_text = rotate_string(text, rot)
+    if rot.isdecimal() == False:
+      error = '0 - 1000'
+      return render_template('index.html', error=error)
+    
+    if int(rot) > 1000:
+      error = '0 - 1000'
+      return render_template('index.html', error=error)
+
+    encrypted_text = rotate_string(text, int(rot))
 
     return render_template('index.html', encrypted_text=encrypted_text)
 

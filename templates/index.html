@@ -9,9 +9,10 @@
 </head>
 
 <body>
+  
   <form action="/" method="post">
-    Rotate by: <input type="text" name="rot" value="0">
-    <br>
+    <h1>Caesar Cipher</h1>
+    Rotate by: <input type="text" name="rot" placeholder="0"><span class="error">{{ error }}</span>
     <textarea name="text" rows="8" cols="80" placeholder="Your text here">{{ encrypted_text }}</textarea>
     <input type="submit" value="Submit Query">
   </form>
